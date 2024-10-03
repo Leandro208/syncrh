@@ -1,4 +1,4 @@
-package br.com.syncrh.dominio;
+package br.com.syncrh.domain.entity;
 
 import java.time.LocalDateTime;
 import java.util.Objects;

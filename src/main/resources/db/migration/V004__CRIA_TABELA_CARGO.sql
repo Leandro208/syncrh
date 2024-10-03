@@ -1,0 +1,7 @@
+CREATE SCHEMA IF NOT EXISTS rh;
+
+CREATE TABLE rh.cargo (
+    id_cargo SERIAL PRIMARY KEY,
+    denominacao VARCHAR(255) NOT NULL,
+    ativo BOOLEAN NOT NULL
+);

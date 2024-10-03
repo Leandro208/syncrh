@@ -17,31 +17,43 @@
 <body>
 
 	<div class="cadastro">
-		<form th:object="${pessoa}" th:action="@{/cadastro/funcionario}" class="form" method="post">
+		<form th:object="${funcionario}" th:action="@{/cadastro/funcionario}" class="form" method="post">
 
 			<h2>Cadastrar Funcionario</h2>
-
+			<h3>Dados Pessoais</h3>
 			<div class="row flx">
-				<input type="text" th:field="${pessoa.nome}" class="input" name="nome" placeholder="Nome*" required>
-				<input type="text" th:field="${pessoa.cpf}" class="input" name="cpf" placeholder="CPF*" maxlength="14" required>
+				<input type="text" th:field="${funcionario.pessoa.nome}" class="input" name="nome" placeholder="Nome*"
+					required>
+				<input type="text" th:field="${funcionario.pessoa.cpf}" class="input" name="cpf" placeholder="CPF*"
+					maxlength="14" required>
 			</div>
 			<div class="row flx">
-				<input type="date" class="input" th:field="${pessoa.dataNascimento}"
+				<input type="date" class="input" th:field="${funcionario.pessoa.dataNascimento}"
 					placeholder="Data de Nascimento" />
-				<input type="text" th:field="${pessoa.sexo}" class="input" name="sexo"
-										placeholder="Sexo*" maxlength="1">
+				<input type="text" th:field="${funcionario.pessoa.sexo}" class="input" name="sexo" placeholder="Sexo*"
+					maxlength="1">
 			</div>
 			<div class="row">
-				<input type="text" th:field="${pessoa.email}" class="input" name="email"
+				<input type="text" th:field="${funcionario.pessoa.email}" class="input" name="email"
 					placeholder="Email*">
 			</div>
-			
+
+			<h3>Dados Funcionais</h3>
+
+			<div class="row flx">
+				<input type="date" class="input" th:field="${funcionario.dataAdmissao}"
+					placeholder="Data de admissão" />
+			</div>
+
+			<h3>Dados de acesso</h3>
 			<div th:object="${usuario}">
 				<div class="row">
-					<input type="text" th:field="${usuario.login}" class="input" name="login" placeholder="login*" required>
+					<input type="text" th:field="${usuario.login}" class="input" name="login" placeholder="login*"
+						required>
 				</div>
 				<div class="row">
-					<input type="password" th:field="${usuario.senha}" class="input" name="senha" placeholder="Senha*" required>
+					<input type="password" th:field="${usuario.senha}" class="input" name="senha" placeholder="Senha*"
+						required>
 				</div>
 			</div>
 
@@ -54,9 +66,9 @@
 				<b th:text="${msgErro}" style="color: Red; float: right;"></b>
 				<br><br>
 			</div>
-			
+
 			<div class="row flx">
-				<input type="submit" class="btn" name="btn" th:value="${pessoa.id} == 0 ? Cadastrar : Editar">
+				<input type="submit" class="btn" name="btn" th:value="Cadastrar">
 				<input type="submit" class="btn" name="btn" value="Cancelar" formaction="/" formmethod="get">
 			</div>
 		</form>

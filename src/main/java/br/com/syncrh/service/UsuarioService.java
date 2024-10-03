@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import br.com.syncrh.dominio.Usuario;
+import br.com.syncrh.domain.entity.Usuario;
 import br.com.syncrh.repository.UsuarioRepository;
 
 @Service
