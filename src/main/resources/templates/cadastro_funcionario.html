@@ -41,22 +41,20 @@
 			<h3>Dados Funcionais</h3>
 
 			<div class="row flx">
-				<input type="date" class="input" th:field="${funcionario.dataAdmissao}"
+				<input type="date" class="input" th:field="${funcionario.funcionario.dataAdmissao}"
 					placeholder="Data de admissão" />
 			</div>
 
 			<h3>Dados de acesso</h3>
-			<div th:object="${usuario}">
 				<div class="row">
-					<input type="text" th:field="${usuario.login}" class="input" name="login" placeholder="login*"
+					<input type="text" th:field="${funcionario.usuario.login}" class="input" name="login" placeholder="login*"
 						required>
 				</div>
 				<div class="row">
-					<input type="password" th:field="${usuario.senha}" class="input" name="senha" placeholder="Senha*"
+					<input type="password" th:field="${funcionario.usuario.senha}" class="input" name="senha" placeholder="Senha*"
 						required>
 				</div>
-			</div>
-
+			
 			<div th:if="${msgSucesso} != null">
 				<b th:text="${msgSucesso}" style="color: #2A4F7B; float: right;"></b>
 				<br>

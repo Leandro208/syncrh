@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import br.com.syncrh.domain.dto.CadastroFuncionarioDTO;
 import br.com.syncrh.domain.entity.Funcionario;
 import br.com.syncrh.domain.entity.Usuario;
 import br.com.syncrh.domain.enums.RegimeTrabalho;
@@ -23,13 +24,14 @@ public class FuncionarioService {
 	}
 
 	@Transactional
-	public void cadastrar(Funcionario funcionario, Usuario usuario) {
-		pessoaService.cadastrar(funcionario.getPessoa(), usuario);
+	public void cadastrar(CadastroFuncionarioDTO funcionarioCadastro) {
+		pessoaService.cadastrar(funcionarioCadastro.getPessoa(), funcionarioCadastro.getUsuario());
 		
-		funcionario.setDataCadastro(LocalDateTime.now());
-		funcionario.setUltimaAtualizacao(LocalDateTime.now());
-		funcionario.setSituacao(Situacao.ATIVO);
-		funcionario.setRegimeTrabalho(RegimeTrabalho.QUARENTA_HORAS_SEMANAIS);
-		funcionarioRepository.save(funcionario);
+		funcionarioCadastro.getFuncionario().setDataCadastro(LocalDateTime.now());
+		funcionarioCadastro.getFuncionario().setUltimaAtualizacao(LocalDateTime.now());
+		funcionarioCadastro.getFuncionario().setSituacao(Situacao.ATIVO);
+		funcionarioCadastro.getFuncionario().setRegimeTrabalho(RegimeTrabalho.QUARENTA_HORAS_SEMANAIS);
+		funcionarioCadastro.getFuncionario().setPessoa(funcionarioCadastro.getPessoa());
+		funcionarioRepository.save(funcionarioCadastro.getFuncionario());
 	}
 }
