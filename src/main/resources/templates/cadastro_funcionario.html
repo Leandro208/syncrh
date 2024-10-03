@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<title>Cadastrar Produto</title>
+	<link href="/css/form.css" type="text/css" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+	<script src="https://kit.fontawesome.com/0c25c3c076.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
+	<div class="cadastro">
+		<form th:object="${pessoa}" th:action="@{/cadastro/funcionario}" class="form" method="post">
+
+			<h2>Cadastrar Funcionario</h2>
+
+			<div class="row flx">
+				<input type="text" th:field="${pessoa.nome}" class="input" name="nome" placeholder="Nome*" required>
+				<input type="text" th:field="${pessoa.cpf}" class="input" name="cpf" placeholder="CPF*" maxlength="14" required>
+			</div>
+			<div class="row flx">
+				<input type="date" class="input" th:field="${pessoa.dataNascimento}"
+					placeholder="Data de Nascimento" />
+				<input type="text" th:field="${pessoa.sexo}" class="input" name="sexo"
+										placeholder="Sexo*" maxlength="1">
+			</div>
+			<div class="row">
+				<input type="text" th:field="${pessoa.email}" class="input" name="email"
+					placeholder="Email*">
+			</div>
+			
+			<div th:object="${usuario}">
+				<div class="row">
+					<input type="text" th:field="${usuario.login}" class="input" name="login" placeholder="login*" required>
+				</div>
+				<div class="row">
+					<input type="password" th:field="${usuario.senha}" class="input" name="senha" placeholder="Senha*" required>
+				</div>
+			</div>
+
+			<div th:if="${msgSucesso} != null">
+				<b th:text="${msgSucesso}" style="color: #2A4F7B; float: right;"></b>
+				<br>
+			</div>
+
+			<div th:if="${msgErro} != null">
+				<b th:text="${msgErro}" style="color: Red; float: right;"></b>
+				<br><br>
+			</div>
+			
+			<div class="row flx">
+				<input type="submit" class="btn" name="btn" th:value="${pessoa.id} == 0 ? Cadastrar : Editar">
+				<input type="submit" class="btn" name="btn" value="Cancelar" formaction="/" formmethod="get">
+			</div>
+		</form>
+	</div>
+
+	<script src="/js/cadastro.js"></script>
+</body>
+
+</html>
